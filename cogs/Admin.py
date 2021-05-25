@@ -16,9 +16,30 @@ class Admin(commands.Cog):
     @commands.has_permissions(administrator=True)
     async def kick(self, ctx, member: discord.Member, *, reason=None):
         await member.kick(reason=reason)
-        await ctx.send(f'{member} foi kickado do servidor.')
+        await ctx.send(f'{member.mention} foi kickado do servidor.')
         if reason is not None:
             await ctx.send(f'Motivo: {reason}')
+
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def ban(self, ctx, member: discord.Member, *, reason=None):
+        await member.ban(reason=reason)
+        await ctx.send(f'{member.mention} foi banido do servidor.')
+        if reason is not None:
+            await ctx.send(f'Motivo: {reason}')
+
+    @commands.command()
+    @commands.has_permissions(administrator=True)
+    async def unban(self, ctx, *, member):
+        ban_users = await ctx.guild.bans()
+        member_name, member_discriminator = member.split('#')
+
+        for ban_entry in ban_users:
+            user = ban_entry.user
+            if (user.name, user.discriminator) == (member_name, member_discriminator):
+                await ctx.guild.unban(user)
+                await ctx.send(f'{user.mention} desbanido.')
+                return
 
 
 def setup(client):
