@@ -3,7 +3,7 @@ from discord.ext import commands
 import random
 from datetime import datetime
 
-badWords = ['safada']
+bad_words = open('Data/BadWords.txt', 'r').read().lower().split('\n')
 
 class Interativo(commands.Cog):
 
@@ -51,7 +51,7 @@ class Interativo(commands.Cog):
 
         event.content = event.content.lower()
         for palavra in event.content.split():
-            if palavra in badWords:
+            if palavra in bad_words:
                 await event.delete()
 
 

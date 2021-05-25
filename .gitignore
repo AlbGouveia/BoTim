@@ -1,6 +1,7 @@
 .idea/
-Token.py
-__pycache__/
 venv/
-cogs/__pycache__/
+/__pycache__
+*.cpython-38.pyc
+Token.py
 TimLog.txt
+BadWords.txt

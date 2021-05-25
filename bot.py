@@ -1,5 +1,5 @@
 import discord
-from Token import TokenDiscord
+from Data.Token import TokenDiscord
 import os
 from discord.ext import commands
 
