@@ -1,0 +1,5 @@
+.idea/
+Token.py
+__pycache__/
+venv/
+cogs/__pycache__/
