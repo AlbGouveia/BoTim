@@ -3,7 +3,11 @@ from Token import TokenDiscord
 import os
 from discord.ext import commands
 
-client = commands.Bot(command_prefix='.')
+# É preciso ativar os Intents em discord.com/developers/applications
+intents = discord.Intents.default()
+intents.members = True
+
+client = commands.Bot(command_prefix='.', intents=intents)
 
 
 @client.command()
