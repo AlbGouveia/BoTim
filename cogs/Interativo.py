@@ -69,6 +69,10 @@ class Interativo(commands.Cog):
 08/06 - Av2 de Lógica Matemática e Comunicação e Expressão
 16 e 25/06 - 2CH e AF de Comunicação e Expressão''')
 
+    @commands.command(name='pibic')
+    async def pibic_command(self, ctx):
+        await ctx.send('Doc sobre o PIBIC (Programa de Iniciação Científica):\nhttps://docs.google.com/document/d/1FK1TvzDGkwla4ylMcIJKR-6FYJoJSYQUU_T0-pDHht0/edit?usp=sharing')
+
 
 def setup(client):
     client.add_cog(Interativo(client))
