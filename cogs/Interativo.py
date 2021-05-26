@@ -54,6 +54,21 @@ class Interativo(commands.Cog):
             if palavra in bad_words:
                 await event.delete()
 
+    @commands.command(name='dol')
+    async def dol_command(self, ctx):
+        await ctx.send('Doc resumido sobre as avaliações de Comunicação e Expressão:\nhttps://docs.google.com/document/d/1yDeqix34_w6ZMXvJoLQCgRxRJn3zJbpwpIGXrS6kIQs/edit?usp=sharing')
+
+    @commands.command(name='institucional')
+    async def av_institucional_command(self, ctx):
+        await ctx.send('Link para a Avaliação Institucional (encerramento dia 31/05):\nhttps://aluno.uninassau.edu.br/AvInstitucional/Login.aspx')
+
+    @commands.command(name='datas')
+    async def datas_command(self, ctx):
+        await ctx.send('''Datas importantes:\n30/05 - Prazo de entrega da atividade 07 de Sistemas
+31/05 - Encerramento da Avaliação Institucional
+08/06 - Av2 de Lógica Matemática e Comunicação e Expressão
+16 e 25/06 - 2CH e AF de Comunicação e Expressão''')
+
 
 def setup(client):
     client.add_cog(Interativo(client))
