@@ -3,7 +3,6 @@ from discord.ext import commands
 import random
 from datetime import datetime
 
-bad_words = open('Data/BadWords.txt', 'r').read().lower().split('\n')
 
 class Interativo(commands.Cog):
 
@@ -30,29 +29,23 @@ class Interativo(commands.Cog):
             await ctx.send('Boa madrugada!')
 
     @commands.Cog.listener()
-    async def on_message(self, event):
-        if event.author.bot:
+    async def on_message(self, message):
+        if message.author.bot:
             return
 
-        event.content = event.content.lower()
-        if event.content.startswith('oi'):
-            await event.channel.send(f'Oi, {event.author.name}!')
-        elif event.content.startswith('bom dia'):
-            await event.channel.send(f'Bom dia, {event.author.name}!')
-        elif event.content.startswith('boa tarde'):
-            await event.channel.send(f'Boa tarde, {event.author.name}!')
-        elif event.content.startswith('boa noite'):
-            await event.channel.send(f'Boa noite, {event.author.name}!')
-
-    @commands.Cog.listener()
-    async def on_message(self, event):
-        if event.author.bot:
-            return
-
-        event.content = event.content.lower()
-        for palavra in event.content.split():
-            if palavra in bad_words:
-                await event.delete()
+        message.content = message.content.lower()
+        if message.content.startswith('oi'):
+            await message.channel.send(f'Oi, {message.author.name}!')
+            print('Cumprimentos correspondidos!')
+        elif message.content.startswith('bom dia'):
+            await message.channel.send(f'Bom dia, {message.author.name}!')
+            print('Cumprimentos correspondidos!')
+        elif message.content.startswith('boa tarde'):
+            await message.channel.send(f'Boa tarde, {message.author.name}!')
+            print('Cumprimentos correspondidos!')
+        elif message.content.startswith('boa noite'):
+            await message.channel.send(f'Boa noite, {message.author.name}!')
+            print('Cumprimentos correspondidos!')
 
     @commands.command(name='dol')
     async def dol_command(self, ctx):
